@@ -1,8 +1,9 @@
+from subprocess import call
+
 # Install Necessary python modules
 call(["apt", "-y", "install", "python3-colorama"])
 call(["apt", "-y", "install", "python3-wget"])
 
-from subprocess import call
 from colorama import Fore, init
 init(autoreset=True)
 import wget
