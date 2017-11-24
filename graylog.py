@@ -1,3 +1,7 @@
+# Install Necessary python modules
+call(["apt", "-y", "install", "python3-colorama"])
+call(["apt", "-y", "install", "python3-wget"])
+
 from subprocess import call
 from colorama import Fore, init
 init(autoreset=True)
@@ -11,10 +15,6 @@ call(["apt", "update"])
 # Upgrade packages
 print(Fore.GREEN + "\n*** Running apt upgrade command ***\n")
 call(["apt", "upgrade", "-y"])
-
-# Install Necessary python modules
-call(["apt", "-y", "install", "python3-colorama"])
-call(["apt", "-y", "install", "python3-wget"])
 
 # Install necessary packages for complete graylog setup
 print(Fore.GREEN + "\n*** Installing necessary packages ***\n")
