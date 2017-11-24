@@ -67,4 +67,4 @@ print(Fore.GREEN + "\n*** Starting Graylog ***\n")
 call(["systemctl", "start", "graylog-server.service"])
 
 # Move tmp file to server.conf
-shutil.copyfile("${file_path}","/etc/graylog/server/server.conf")
+shutil.copyfile(${file_path},"/etc/graylog/server/server.conf")
