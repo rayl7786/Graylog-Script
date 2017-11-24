@@ -59,7 +59,7 @@ call(["systemctl", "enable", "graylog-server.service"])
 print(Fore.GREEN + "\n*** Configuring Graylog ***\n")
 
 # Run shell script to configure server.conf
-call(["sh", "/root/graylog_conf.sh"])
+call(["sh", "/root/Graylog-Script/graylog_conf.sh"])
 
 # Start Graylog Server
 print(Fore.GREEN + "\n*** Starting Graylog ***\n")
