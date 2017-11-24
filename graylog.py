@@ -12,6 +12,10 @@ call(["apt", "update"])
 print(Fore.GREEN + "\n*** Running apt upgrade command ***\n")
 call(["apt", "upgrade", "-y"])
 
+# Install Necessary python modules
+call(["apt", "-y", "install", "python3-colorama"])
+call(["apt", "-y", "install", "python3-wget"])
+
 # Install necessary packages for complete graylog setup
 print(Fore.GREEN + "\n*** Installing necessary packages ***\n")
 call(["apt", "-y", "install", "apt-transport-https", "openjdk-8-jre-headless", "uuid-runtime", "pwgen"])
