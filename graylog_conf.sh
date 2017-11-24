@@ -25,7 +25,7 @@ sed -i "/^root_password_sha2/c\root_password_sha2 = ${password}" ${file_path}
 get_elasticsearch_ip()
 {
 elasticsearch=$(dpkg -l | grep elasticsearch | wc -l)
-if [ ${elasticsearch} > 0 ]; then
+if [ ${elasticsearch} -eq 0 ]; then
 	read -p 'What will be the Elasticsearch host IP? : ' elasticsearch_ip
 	if [ -z ${elasticsearch_ip} ]; then
 		echo "\n***Nothing was entered***\n"
@@ -45,7 +45,7 @@ sed -i "/^#elasticsearch_hosts/c\elasticsearch_hosts = http://${elasticsearch_ip
 get_mongodb_ip()
 {
 mongodb=$(dpkg -l | grep mongodb-server | wc -l)
-if [ ${mongodb} > 0 ]; then
+if [ ${mongodb} -eq 0 ]; then
 	read -p 'What will be the MongoDB host IP? : ' mongodb_ip
 	if [ -z ${mongodb_ip} ]; then
 		echo "\n***Nothing was entered***\n"
