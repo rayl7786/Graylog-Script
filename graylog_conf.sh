@@ -33,9 +33,9 @@ if [ ${elasticsearch} -eq 0 ]; then
 	fi
 else
 	elasticsearch_ip=127.0.0.1
-	ES_conf=$(/etc/elasticsearch/elasticsearch.yml)
-	sed -i "/^#cluster.name/c\cluster.name: graylog" ${ES_conf}
-	sed -i "/^#network.host/c\network.host: ${elasticsearch_ip}" ${ES_conf}
+	#ES_conf=$(/etc/elasticsearch/elasticsearch.yml)
+	sed -i "/^#cluster.name/c\cluster.name: graylog" /etc/elasticsearch/elasticsearch.yml
+	sed -i "/^#network.host/c\network.host: ${elasticsearch_ip}" /etc/elasticsearch/elasticsearch.yml
 fi
 }
 
