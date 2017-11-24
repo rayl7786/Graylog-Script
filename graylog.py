@@ -8,6 +8,7 @@ from colorama import Fore, init
 init(autoreset=True)
 import wget
 import fileinput
+import shutil
 
 # Update repository
 print(Fore.GREEN + "\n*** Running apt update command ***\n")
@@ -65,4 +66,5 @@ call(["sh", "/root/Graylog-Script/graylog_conf.sh"])
 print(Fore.GREEN + "\n*** Starting Graylog ***\n")
 call(["systemctl", "start", "graylog-server.service"])
 
-
+# Move tmp file to server.conf
+shutil.copyfile("${file_path}","/etc/graylog/server/server.conf")
