@@ -37,12 +37,9 @@ if mongodb_answer.startswith('y'):
 
 # Download graylog package & graylog script
 graylog_package_url = 'https://packages.graylog2.org/repo/packages/graylog-2.3-repository_latest.deb'
-graylog_script_url = '
 graylog_filename = wget.download(graylog_package_url, out="/tmp")
 print(Fore.GREEN + "\n*** Downloading and Installing Graylog package ***\n")
 graylog_filename
-print(Fore.GREEN + "\n*** Downloading Graylog Script ***\n")
-
 
 # Install graylog package
 call(["dpkg", "-i", "/tmp/graylog-2.3-repository_latest.deb"])
