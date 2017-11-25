@@ -1,9 +1,7 @@
 #!/bin/sh
 
 # Copy current graylog conf file to temp file
-#file_path=$(mktemp -t graylog_XXX)
-#cp /etc/graylog/server/server.conf $file_path
-file_path=`cat /etc/graylog/server/server.conf`
+file_path='/etc/graylog/server/server.conf'
 
 # Generate Secret Password
 secret_password=$(pwgen -N 1 -s 96)
@@ -34,9 +32,9 @@ if [ ${elasticsearch} -eq 0 ]; then
 	fi
 else
 	elasticsearch_ip=127.0.0.1
-	#ES_conf=$(/etc/elasticsearch/elasticsearch.yml)
-	sed -i "/^#cluster.name/c\cluster.name: graylog" /etc/elasticsearch/elasticsearch.yml
-	sed -i "/^#network.host/c\network.host: ${elasticsearch_ip}" /etc/elasticsearch/elasticsearch.yml
+	ES_conf='/etc/elasticsearch/elasticsearch.yml'
+	sed -i "/^#cluster.name/c\cluster.name: graylog" ${ES_conf}
+	sed -i "/^#network.host/c\network.host: ${elasticsearch_ip}" ${ES_conf}
 fi
 }
 
