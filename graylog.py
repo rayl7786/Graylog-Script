@@ -64,7 +64,10 @@ print(Fore.GREEN + "\n*** Configuring Graylog ***\n")
 # Run shell script to configure server.conf
 call(["sh", "/root/Graylog-Script/graylog_conf.sh"])
 
-# Start Graylog Server
+# Start Elasticsearch & Graylog Server
+print(Fore.GREEN + "\n*** Starting Elasticsearch ***\n")
+call(["systemctl", "start", "elasticsearch.service"])
+
 print(Fore.GREEN + "\n*** Starting Graylog ***\n")
 call(["systemctl", "start", "graylog-server.service"])
 
