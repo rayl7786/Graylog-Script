@@ -4,7 +4,8 @@ Python with shell script to install Graylog 2.3 with Elasticsearch 5.X. Currentl
 
 **With Elasticsearch installed locally, server must have at least 4G of RAM
 
+```
 git clone https://github.com/rayl7786/Graylog-Script.git
 cd Graylog-Script
 python3 graylog.py
-
+```
