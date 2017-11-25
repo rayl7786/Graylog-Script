@@ -62,10 +62,6 @@ print(Fore.GREEN + "\n*** Configuring Graylog ***\n")
 # Run shell script to configure server.conf
 call(["sh", "/root/Graylog-Script/graylog_conf.sh"])
 
-# Move tmp file to server.conf
-tmp_file = call(["ls", "/tmp", "|", "grep", "graylog_"])
-shutil.copyfile(file_path,"/etc/graylog/server/server.conf")
-
 # Start Graylog Server
 print(Fore.GREEN + "\n*** Starting Graylog ***\n")
 call(["systemctl", "start", "graylog-server.service"])

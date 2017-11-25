@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # Copy current graylog conf file to temp file
-file_path=$(mktemp -t graylog_XXX)
-cp /etc/graylog/server/server.conf $file_path
+#file_path=$(mktemp -t graylog_XXX)
+#cp /etc/graylog/server/server.conf $file_path
+file_path=`cat /etc/graylog/server/server.conf`
 
 # Generate Secret Password
 secret_password=$(pwgen -N 1 -s 96)
