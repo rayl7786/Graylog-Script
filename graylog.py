@@ -8,7 +8,6 @@ from colorama import Fore, init
 init(autoreset=True)
 import wget
 import fileinput
-import shutil
 
 # Update repository
 print(Fore.GREEN + "\n*** Running apt update command ***\n")
@@ -33,17 +32,16 @@ if elasticsearch_answer.startswith('y'):
   f.closed
   call(["apt", "update"])
   call(["apt", "-y", "install", "elasticsearch"])
-  call(["update-rc.d", "elasticsearch", "defaults", "95", "10"])
-#else:
+  call(["systemctl", "daemon-reload"])
+  call(["systemctl", "enable", "elasticsearch.service"])
 
 # Install MongoDB locally
 mongodb_answer = input("\nWould you like MongoDB installed locally? ").lower()
 if mongodb_answer.startswith('y'):
   print(Fore.GREEN + "\n*** Installing MongoDB ***\n")
   call(["apt", "-y", "install", "mongodb-server"])
-#else:
 
-# Download graylog package & graylog script
+# Download graylog package
 graylog_package_url = 'https://packages.graylog2.org/repo/packages/graylog-2.3-repository_latest.deb'
 graylog_filename = wget.download(graylog_package_url, out="/tmp")
 print(Fore.GREEN + "\n*** Downloading and Installing Graylog package ***\n")
@@ -63,6 +61,10 @@ print(Fore.GREEN + "\n*** Configuring Graylog ***\n")
 
 # Run shell script to configure server.conf
 call(["sh", "/root/Graylog-Script/graylog_conf.sh"])
+
+# Remove unnecessary files created during script
+call(["rm", "/root/Graylog-Script/GPG-KEY-elasticsearch"])
+call(["rm", "/tmp/graylog-2.3-repository_latest.deb"])
 
 # Start Elasticsearch & Graylog Server
 print(Fore.GREEN + "\n*** Starting Elasticsearch ***\n")
