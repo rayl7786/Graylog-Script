@@ -28,7 +28,9 @@ if elasticsearch_answer.startswith('y'):
   print(Fore.GREEN + "\n*** Installing Elasticsearch ***\n") 
   call(["wget", "https://artifacts.elastic.co/GPG-KEY-elasticsearch"])
   call(["apt-key", "add", "GPG-KEY-elasticsearch"]) 
-  call(["echo", "deb https://artifacts.elastic.co/packages/5.x/apt stable main", "|", "tee", "-a", "/etc/apt/sources.list.d/elastic-5.x.list"])
+  with open('/etc/apt/sources.list.d/elastic-5.x.list', 'w') as f:
+    f.write('deb https://artifacts.elastic.co/packages/5.x/apt stable main\n')
+  f.closed
   call(["apt", "update"])
   call(["apt", "-y", "install", "elasticsearch"])
   call(["update-rc.d", "elasticsearch", "defaults", "95", "10"])
